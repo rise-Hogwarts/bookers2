@@ -1,1 +1,50 @@
-<h1>bookindex</h1>
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>User info</h2>
+
+    <p><%= image_tag current_user.get_profile_image(100,100) %></p>
+
+    <h5>name</h5>
+    <h5><%= current_user.name %></h5>
+
+    <h5>introduction</h5>
+    <h5><%= current_user.introduction %></h5>
+
+    <p><%= link_to "プロフィール編集", edit_user_path(:id) %></p>
+    <h2>New book</h2>
+    <%= form_with model: Book.new, url:'/books', methood: :post do |f| %>
+    <div class="title">
+      <p class="title-text">Title</p>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="body">
+      <p class="body-text">Opinion</p>
+      <%= f.text_area :body %>
+    </div>
+    <div class="create"><%= f.submit 'Create Book' %></div>
+   <% end %>
+
+   <h2>Books</h2>
+
+   <table>
+     <thead>
+        <tr>
+          <th>Title</th>
+          <th>Opinion</th>
+        </tr>
+      </thead>
+  <% @books.each do |book| %>
+      <tbody>
+        <tr>
+          <td><%= image_tag user.get_profile_image(100,100) %></td>
+          <td><%= book.title %></td>
+          <td><%= book.body %></td>
+        </tr>
+      </tbody>
+    <% end %>
+
+   </table>
+  </body>
+ </html>
