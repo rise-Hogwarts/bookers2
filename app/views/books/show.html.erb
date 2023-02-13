@@ -3,6 +3,7 @@
   <body>
     <h2>User info</h2>
 
+
     <p><%= image_tag current_user.get_profile_image(100,100) %></p>
 
     <h5>name</h5>
@@ -11,7 +12,7 @@
     <h5>introduction</h5>
     <h5><%= current_user.introduction %></h5>
 
-    <p><%= link_to "プロフィール編集", edit_user_path(:id) %></p>
+    <p><%= link_to "プロフィール編集", edit_user_path(current_user.id) %></p>
 
 
     <h2>New book</h2>
@@ -37,17 +38,18 @@
          <%= link_to user_path(current_user.id) do %>
            <%= image_tag current_user.get_profile_image(100,100) %>
          <% end %>
-         <p><%= @book.title %></p>
+         <p><%= link_to "#{@book.title}" %></p>
          <p><%= @book.body %></p>
 
-         <% if @book.id == current_user.id %>
-           <%= link_to "Edit", edit_user_path(@book) %>
-           <%= link_to "Destroy", destroy_book_path(@book.id), method: :delete %>
+         <% if @book.user_id == current_user.id %>
+           <%= link_to "Edit", edit_book_path(@book.id) %>
+           <%= link_to "Destroy", book_path(@book.id), method: :delete %>
          <% end %>
        </div>
    </div>
+
    <%= link_to user_path(current_user.id) do %>
-     <%= @book.name %>
+     <%= current_user.name %>
    <% end %>
 
    </body>
