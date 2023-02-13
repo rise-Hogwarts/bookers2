@@ -1,12 +1,22 @@
-<h2>User info</h2>
-<%= form_with model: @user do |f| %>
-  <p>Name</p>
-  <%= f.text_field :name %>
-  <p>image</p>
-  <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+<div class="container">
+<div class="row">
+  <div class="w-50 mx-auto">
+     <p></p>
+     <h2>User info</h2>
+     <%= form_with model: @user do |f| %>
+       <p>Name</p>
+       <%= f.text_field :name, style:"text-align:left", class:"btn btn-left border-secondary col-10" %>
+       <p></p>
+       <p>image</p>
+       <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
 
-   <p>introduction</p>
-  <%= f.text_area :introduction %>
+       <p></p>
+       <p>introduction</p>
+       <%= f.text_area :introduction, style:"text-align:left", class:"btn border-secondary col-10" %>
+       <p></p>
+       <%= f.submit "Update User", class:"btn btn-secondary" %>
+     <% end %>
 
-  <%= f.submit "Update User" %>
-<% end %>
+  </div>
+</div>
+</div>
