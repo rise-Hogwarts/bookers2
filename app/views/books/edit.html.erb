@@ -1,1 +1,23 @@
+<div class="container">
+<div class="row">
+<div class="w-50 mx-auto">
 
+<p></p>
+<h1>Editing Book</h1>
+<%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
+<p>Title</p>
+<%= f.text_field :title, class:"col-10 form-control" %>
+<p></p>
+<p>Opinion</p>
+<%= f.text_area :body, class:"col-10 form-control" %>
+<p></p>
+<div><%= f.submit "Update Book", class:"btn btn-success" %></div>
+<% end %>
+<p></p>
+<%= link_to "Show", book_path(@book.id) %>
+|
+<%= link_to "Back", books_path %>
+
+</div>
+</div>
+</div>

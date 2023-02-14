@@ -7,17 +7,18 @@
      <p></p>
       <h2>User info</h2>
 
-        <p><%= image_tag current_user.get_profile_image(100,100) %></p>
+        <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
 
       <table class="table col-9">
         <tbody>
           <tr>
+
             <th>name</th>
-            <th><%= current_user.name %></th>
+            <th><%= @book.user.name %></th>
           </tr>
           <tr>
             <th>introduction</th>
-            <th><%= current_user.introduction %></th>
+            <th><%= @book.user.introduction %></th>
           </tr>
         </tbody>
       </table>
@@ -55,16 +56,17 @@
        <table class="table">
          <tbody>
           <tr>
-             <td><%= link_to user_path(current_user.id) do %>
+
+             <td><%= link_to user_path(@book.user.id) do %>
                   <%= image_tag current_user.get_profile_image(100,100) %></br>
-                  <%= current_user.name %>
+                  <%= @book.user.name %>
                  <% end %></td>
 
              <td><%= link_to "#{@book.title}" %></td>
              <td><%= @book.body %></td>
              <% if @book.user == current_user %>
-             <td><%= link_to "Edit" edit_book_path(@book) %></td>
-             <td><%= link_to "Destroy" book_path(@book), method: :delete %></td>
+             <td><%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success btn-sm" %></td>
+             <td><%= link_to "Destroy", book_path(@book), method: :delete, class:"btn btn-danger btn-sm" %></td>
              <% end %>
           </tr>
          </tbody>
@@ -72,9 +74,9 @@
        </div>
    </div>
 </div>
-   <%= link_to user_path(current_user.id) do %>
-     <%= current_user.name %>
-   <% end %>
+
+
+
 
    </body>
    </html>
