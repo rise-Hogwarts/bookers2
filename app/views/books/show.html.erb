@@ -1,15 +1,20 @@
  <!DOCTYPE html>
 <html>
   <body>
- <div class="container">
+
+
+
+
+<p id="notice"></p>
+ <div class="container px-5 px-sm-0">
   <div class="row">
-   <div class="col-4">
-     <p></p>
+   <div class="col-md-3">
+
       <h2>User info</h2>
 
         <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
 
-      <table class="table col-9">
+      <table class="table">
         <tbody>
           <tr>
 
@@ -23,34 +28,37 @@
         </tbody>
       </table>
 
-
-        <%= link_to edit_user_path(current_user.id), class:"btn btn-block border-secondary col-10" do %>
+     <div class="row">
+        <%= link_to edit_user_path(@book.user.id), class:"btn btn-block btn-outline-secondary" do %>
           <span class="fas fa-user-cog"></span>
         <% end %>
+     </div>
 
 
-        <p></p>
-        <h2>New book</h2>
+
+        <h2 class="mt-3">New book</h2>
         <%= form_with model: Book.new, url:'/books', methood: :post do |f| %>
-        <div class="title">
-          <p class="title-text">Title</p>
-           <%= f.text_field :title, class:"col-9" %>
+        <div class="form-group">
+          <p class="book_title">Title</p>
+           <%= f.text_field :title, class:"form-control book_title" %>
         </div>
 
 
-       <p></p>
-        <div class="body">
-          <p class="body-text">Opinion</p>
-            <%= f.text_area :body, class:"col-9" %>
+
+        <div class="form-group">
+          <p class="book-opinion">Opinion</p>
+            <%= f.text_area :body, class:"form-control book_body" %>
         </div>
-        <p></p>
-        <%= f.submit 'Create Book', class:"btn-success btn-md w-30" %>
+
+        <div class="form-group">
+        <%= f.submit 'Create Book', class:"btn btn-success" %>
+        </div>
         <% end %>
         </div>
 
 
-   <div class="col-8">
-     <p></p>
+   <div class="col-md-8 offset-md-1">
+
      <h2>Book detail</h2>
 
        <table class="table">
